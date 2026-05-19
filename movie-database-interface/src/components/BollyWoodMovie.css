@@ -1,0 +1,168 @@
+/* .movie-card {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    transition: all 0.3s ease;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.bollywood-movie {
+    padding: 2rem;
+    text-align: center;
+}
+
+.bollywood-movie h1 {
+    font-size: 3rem;
+    color: #ffcc00;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.movie-card {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8 20 rgba(0, 0, 0, 0.5);
+}
+
+.movie-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.movie-title {
+    font-size: 1.3rem;
+    color: #ffdd57;
+    margin-bottom: 0.3rem;
+}
+
+.movie-year,
+.movie-genre,
+.movie-director,
+.movive-cast {
+    font-size: 0.95rem;
+    margin: 0.2rem 0;
+    color: #ccc;
+}
+
+.movie-rating {
+    margin-top: 0.7rem;
+    font-weight: bold;
+    padding: 0.4rem;
+    border-radius: 8px;
+}
+
+.rating-blockbuster {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.rating-superhit {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.rating-hit {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.rating-avarage {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.search-section {
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 60%;
+    max-width: 400px;
+    padding: 0.8rem 1rem;
+    border-radius: 25px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    transition: box-shadow 0.3s ease;
+    background: #ccc;
+}
+
+.search-input:focus {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.search-result {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    color: #ffcc00;
+}
+
+.filter-search {
+    margin-bottom: 2rem;
+}
+
+.filter-search h4 {
+    margin-bottom: 0.5rem;
+    color: #ffcc00;
+    font-weight: 600;
+}
+
+.genre-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .8rem;
+}
+
+.genre-button {
+    padding: 0.5rem 1rem;
+    border: 2px solid #ffcc00;
+    background-color: transparent;
+    color: #ffcc00;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.genre-button:hover {
+    background-color: #ffcc00;
+    color: #000;
+}
+
+.genre-button.active {
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
+}
