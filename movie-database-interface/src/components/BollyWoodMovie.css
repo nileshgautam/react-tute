@@ -214,10 +214,8 @@ body {
 }
 
 .clear-filter {
-    width: 20%;
+    padding: 0.5rem 1rem;
     background-color: #ffdd57;
-    height: 40px;
-    border-radius: 20px;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -240,9 +238,10 @@ body {
 .empty-state h4 {
     font-size: 1.6rem;
     margin-bottom: 0.5rem;
-    color:#ff6666;
+    color: #ff6666;
 }
+
 .empty-state p {
     font-size: 1rem;
-    color:#aaa;
+    color: #aaa;
 }
