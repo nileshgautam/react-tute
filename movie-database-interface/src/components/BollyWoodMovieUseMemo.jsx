@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import './BollyWoodMovie.css';
 
 const bollyWoodMovies = [
@@ -104,7 +104,7 @@ const bollyWoodMovies = [
     },
 ];
 
-function BollyWoodMovie() {
+function BollyWoodMovieUseMemo() {
     //State for Loading indicator
     const [loading, setLoading] = useState(false);
 
@@ -127,39 +127,42 @@ function BollyWoodMovie() {
     }
 
 
-    const filteredMovies = movies.filter(movie => {
-        const searchLower = searchTerm.toLowerCase();
+    const sortendAndFilteredMovies = useMemo(() => {
+
+        const filteredMovies = movies.filter(movie => {
+            const searchLower = searchTerm.toLowerCase();
 
 
-        const matchesSearches = movie.title.toLowerCase().includes(searchLower) ||
-            movie.genre.toLowerCase().includes(searchLower) ||
-            movie.director.toLowerCase().includes(searchLower) ||
-            movie.cast.some(actor =>
-                actor.toLowerCase().includes(searchLower)
-            ) ||
-            movie.year.toString().includes(searchLower);
+            const matchesSearches = movie.title.toLowerCase().includes(searchLower) ||
+                movie.genre.toLowerCase().includes(searchLower) ||
+                movie.director.toLowerCase().includes(searchLower) ||
+                movie.cast.some(actor =>
+                    actor.toLowerCase().includes(searchLower)
+                ) ||
+                movie.year.toString().includes(searchLower);
 
-        const matchesGenres = selectedGenre === 'All' || movie.genre === selectedGenre;
+            const matchesGenres = selectedGenre === 'All' || movie.genre === selectedGenre;
 
-        return (matchesSearches && matchesGenres);
-    });
+            return (matchesSearches && matchesGenres);
+        });
 
 
-    const sortendAndFilteredMovies = filteredMovies.sort((a, b) => {
+        return filteredMovies.sort((a, b) => {
 
-        switch (sortBy) {
-            case 'rating':
-                return b.rating - a.rating;
-            case 'year':
-                return b.year - a.year;
-            case 'genre':
-                return a.genre.localeCompare(b.genre)
-            default:
-                return a.title.localeCompare(b.title);
+            switch (sortBy) {
+                case 'rating':
+                    return b.rating - a.rating;
+                case 'year':
+                    return b.year - a.year;
+                case 'genre':
+                    return a.genre.localeCompare(b.genre)
+                default:
+                    return a.title.localeCompare(b.title);
 
-        }
+            }
+        })
 
-    })
+    }, [movies, searchTerm, selectedGenre, sortBy])
 
     const genres = ['All', ... new Set(movies.map(movie => movie.genre))];
 
@@ -189,7 +192,7 @@ function BollyWoodMovie() {
                             {
                                 searchTerm && (
                                     <p className="search-result">
-                                        Founded {filteredMovies.length} movie{filteredMovies.length !== 1 ? 's' : ''} for "{searchTerm}"
+                                        Founded {sortendAndFilteredMovies.length} movie{sortendAndFilteredMovies.length !== 1 ? 's' : ''} for "{searchTerm}"
                                     </p>)
                             }
 
@@ -204,22 +207,20 @@ function BollyWoodMovie() {
                                 </div>
 
                                 <div className="sort-section">
-                                    <label htmlFor="sort-select">  Sort By:
-                                        <select id="sort-select"
-                                            value={sortBy}
-                                            onChange={(e) => setSortBy(e.target.value)}
-                                        >
-                                            <option value="title">Title(A-Z)</option>
-                                            <option value="rating">Rating(High-Low)</option>
-                                            <option value="genre">Genre (A-Z)</option>
-                                            <option value="year">Year (Newest First)</option>
-                                        </select>
-                                    </label>
-
+                                    <label htmlFor="sort-select">Sort By:</label>
+                                    <select id="sort-select"
+                                        value={sortBy}
+                                        onChange={(e) => setSortBy(e.target.value)}
+                                    >
+                                        <option value="title">Title(A-Z)</option>
+                                        <option value="rating">Rating(High-Low)</option>
+                                        <option value="genre">Genre (A-Z)</option>
+                                        <option value="year">Year (Newest First)</option>
+                                    </select>
                                 </div>
 
                                 {
-                                    (searchTerm || selectedGenre !== 'All' &&
+                                    ((searchTerm || selectedGenre !== 'All') &&
 
                                         (
                                             <button className="clear-filter"
@@ -248,9 +249,8 @@ function BollyWoodMovie() {
                                             </div>
 
                                         ))) : (
-                                        <div className="empty-sate">
+                                        <div className="empty-state">
                                             <h4>No Bollywood movies  Found!</h4>
-
                                             <p>
                                                 {searchTerm || selectedGenre !== 'All' ? 'Try adjusting your search or filter criteria' : 'Start Searching to find amazing Bollywood movies!'}
                                             </p>
@@ -267,4 +267,4 @@ function BollyWoodMovie() {
     );
 }
 
-export default BollyWoodMovie;
+export default BollyWoodMovieUseMemo;

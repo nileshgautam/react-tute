@@ -34,6 +34,7 @@ body {
 .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    justify-content: center;
     gap: 2rem;
     padding: 1rem;
 }
@@ -44,11 +45,15 @@ body {
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s;
+
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
 }
 
 .movie-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8 20 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .movie-image {
@@ -165,4 +170,79 @@ body {
     background-color: #ffcc00;
     color: #000;
     font-weight: bold;
+}
+
+.sort-section {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.sort-section label {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    color: #ffcc00;
+    font-weight: 500;
+
+}
+
+
+.sort-section select {
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: #ffdd57;
+    border: 2px solid #ffdd57;
+    outline: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sort-section select option {
+    background-color: #ffdd57;
+    color: #000;
+}
+
+.sort-section select option:checked {
+    background-color: #ffcc00;
+    color: #000;
+}
+
+.sort-section select option:checked {
+    background-color: #ffcc00;
+    color: #000;
+}
+
+.clear-filter {
+    width: 20%;
+    background-color: #ffdd57;
+    height: 40px;
+    border-radius: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.clear-filter:hover {
+    background: none;
+    color: #ffcc00;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.empty-state {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    color: #ccc;
+}
+
+.empty-state h4 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color:#ff6666;
+}
+.empty-state p {
+    font-size: 1rem;
+    color:#aaa;
 }
