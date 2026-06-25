@@ -56,6 +56,7 @@ const taskReducer = (state, action) => {
                 priority: action.payload.priority || "medium",
                 createdAt: new Date().toISOString()
             };
+            
 
             return saveHistory({
                 ...state,

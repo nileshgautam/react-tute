@@ -22,11 +22,27 @@ function TaskForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!formData.title.trim()) return;
+        if (!formData.title.trim()) {
+            alert('Title is required');
+            return;
+
+        }
+
+        if (formData.title.trim().length > 160) {
+            alert('Title cannot exceed 160 characters');
+            return;
+        }
+
+        if (formData.description.trim().length > 500) {
+            alert('Description cannot exceed 500 characters');
+            return;
+        }
 
         addTask(formData);
 
         setFormData({ title: '', description: '', priority: 'medium' });
+
+        alert('Task Created successfully!');
     }
 
 
@@ -38,7 +54,6 @@ function TaskForm() {
             [name]: value
         }))
     }
-
     return (
         <form onSubmit={handleSubmit} className="task-form">
             <h2>Add New Task</h2>
@@ -52,6 +67,9 @@ function TaskForm() {
                     placeholder="Enter task title..."
                     required
                 />
+                <small>
+                    {formData.title.length}/160 characters
+                </small>
             </div>
             <div className="form-group">
                 <label htmlFor="description">Description </label>
@@ -61,6 +79,9 @@ function TaskForm() {
                     placeholder="Enter task Description"
                     rows="3"
                 />
+                <small>
+                    {formData.description.length}/500 characters
+                </small>
             </div>
 
             <div className="form-group">
