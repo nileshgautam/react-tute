@@ -8,6 +8,7 @@
 
 import { useState } from "react";
 import { useTaskContext } from "../context/TaskContext";
+import Swal from 'sweetalert2';
 
 function TaskForm() {
 
@@ -23,18 +24,33 @@ function TaskForm() {
         e.preventDefault();
 
         if (!formData.title.trim()) {
-            alert('Title is required');
+            Swal.fire({
+                title: 'Validation Error',
+                text: 'Title is required',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
             return;
 
         }
 
         if (formData.title.trim().length > 160) {
-            alert('Title cannot exceed 160 characters');
+            Swal.fire({
+                title: 'Validation Error',
+                text: 'Title cannot exceed 160 characters',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
             return;
         }
 
         if (formData.description.trim().length > 500) {
-            alert('Description cannot exceed 500 characters');
+            Swal.fire({
+                title: 'Validation Error',
+                text: 'Description cannot exceed 500 characters',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
             return;
         }
 
@@ -42,7 +58,12 @@ function TaskForm() {
 
         setFormData({ title: '', description: '', priority: 'medium' });
 
-        alert('Task Created successfully!');
+        Swal.fire({
+            title: 'Success!',
+            text: 'Task created successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
     }
 
 

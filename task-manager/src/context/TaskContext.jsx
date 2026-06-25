@@ -9,7 +9,7 @@ const initialState = {
             title: 'Learn React Context',
             description: 'Understand how to create and use context in React applications.',
             completed: false,
-            priority: 'High',
+            priority: 'high',
             createdAt: new Date().toISOString(),
         },
         {
@@ -17,7 +17,7 @@ const initialState = {
             title: 'Master useReducer',
             description: 'Learn how to use the useReducer hook for state management in React.',
             completed: false,
-            priority: 'Medium',
+            priority: 'medium',
             createdAt: new Date().toISOString(),
         }],
     filter: 'all',

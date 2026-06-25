@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTaskContext } from "../context/TaskContext";
 import Modal from "./Modal";
-
+import Swal from 'sweetalert2';
 
 
 function TaskItem({ task }) {
@@ -19,25 +19,44 @@ function TaskItem({ task }) {
 
 
         if (!editData.title.trim()) {
-            alert('Title is required');
+            Swal.fire({
+                title: 'Validation Error',
+                text: 'Title is required',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
             return;
 
         }
 
         if (editData.title.trim().length > 160) {
-            alert('Title cannot exceed 160 characters');
+            Swal.fire({
+                title: 'Validation Error',
+                text: 'Title cannot exceed 160 characters',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
             return;
         }
 
         if (editData.description.trim().length > 500) {
-            alert('Description cannot exceed 500 characters');
+            Swal.fire({
+                title: 'Validation Error',
+                text: 'Description cannot exceed 500 characters',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
             return;
         }
 
         editTask(task.id, editData);
         setIsEditing(false);
-
-        alert('Task updated successfully!');
+        Swal.fire({
+            title: 'Success!',
+            text: 'Task updated successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
     }
 
     const handleCancel = () => {
