@@ -1,0 +1,246 @@
+:root {
+  --primary: #667eea;
+  --secondary: #764ba2;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --text-light: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.8);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-gradient);
+  padding: 20px;
+}
+
+.weather-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.title {
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.search-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--text-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.search-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.current-weather {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.location h2 {
+  color: var(--text-light);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.main-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.temp-icon {
+  font-size: 4rem;
+}
+
+.temp {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.condition {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+.detail-item {
+  text-align: center;
+}
+
+.detail-label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.detail-value {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.forecast {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.forecast h3 {
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.forecast-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.forecast-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.day-name {
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.day-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.day-temps {
+  margin-bottom: 5px;
+}
+
+.high {
+  color: var(--text-light);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.low {
+  color: var(--text-muted);
+}
+
+.rain-chance {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .weather-card {
+    padding: 20px;
+  }
+
+  .temp-icon,
+  .temp {
+    font-size: 3rem;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+  }
+
+  .forecast-item {
+    padding: 10px 5px;
+  }
+
+  .day-icon {
+    font-size: 1.4rem;
+  }
+
+  .details {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
