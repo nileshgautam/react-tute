@@ -142,7 +142,7 @@ legend {
 
 .topping-grid {
   display: grid;
-  grid-template-columns: repeat((auto-fit, minmax((200px, 1fr))));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
   margin-top: 15px;
 }
@@ -226,7 +226,7 @@ legend {
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
-  border: 1px solid #d32f2f;
+  border-top: 2px solid #d32f2f;
   margin-top: 10px;
 }
 
@@ -252,4 +252,51 @@ legend {
 .customer-details p {
   margin: 5px 0;
   color: #555;
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+  border-color: #f44336;
+  background-color: #fff5f5;
+}
+
+.error-message {
+  display: block;
+  color: #f44336;
+  font-size: 0.9em;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.characters-count {
+  display: flex;
+  text-align: left;
+  color: #666;
+  font-size: .8em;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  opacity: 0.7;
+  cursor: not-allowed;
+
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s each-in-out infinite;
+  margin-left: 8px;
+
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
